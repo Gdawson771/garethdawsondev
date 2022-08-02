@@ -18,7 +18,7 @@ export default function Form() {
         const body = JSON.stringify({
             senderName: "gdawson771@gmail.com",
             senderEmail: "gdawson771@gmail.com",
-            message: "Hello, em222ail working",
+            message: formData.email+formData.text,
             date: new Date(),
             fileName: "Test_File_Name"
         })
