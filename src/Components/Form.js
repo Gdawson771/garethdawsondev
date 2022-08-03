@@ -5,6 +5,7 @@ export default function Form() {
         { email: "", text: "" }
     )
 
+    const [emailSent,setEmailSent] = React.useState(false)
     function handleChange(event) {
 
         setFormData(prevData => ({
@@ -15,6 +16,8 @@ export default function Form() {
     function submitData(event) {
         
 
+        setEmailSent(true)
+       
         const body = JSON.stringify({
             senderName: "gdawson771@gmail.com",
             senderEmail: "gdawson771@gmail.com",
@@ -23,7 +26,7 @@ export default function Form() {
             fileName: "Test_File_Name"
         })
         event.preventDefault();
-
+         console.log(emailSent)
         /*fetch("https://w5jn79ev5c.execute-api.eu-west-2.amazonaws.com/sendEmail",{
             "mode": "no-cors",
             "method": "POST",
@@ -97,6 +100,19 @@ export default function Form() {
                 name="text" />
 
             <button className="Form--btn" onClick={(event) => submitData(event)}>Send</button>
+            {emailSent && <div className="Form--confirmSubmit">
++                <section >
++                        <p>Message Sent! Thanks!</p>
++
++                    <h5>Email: {formData.email}</h5>
++                    <h5>Message: {formData.text}</h5>
++
++
++                </section>
++
++                    <button onCLick={()=>setEmailSent(false)} >Confirm</button>
++
++                </div>}
         </form>
     )
 }
